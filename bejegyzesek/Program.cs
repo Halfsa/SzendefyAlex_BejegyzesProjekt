@@ -63,6 +63,20 @@ namespace bejegyzesek
                 Console.WriteLine(bejegyzesek1[i].ToString());
             }
         }
+        static void LegNepszerubb()
+        {
+            int legnagyobb = 0;
+            int index = 0;
+            for (int i = 0; i < bejegyzesek1.Count; i++)
+            {
+                if (bejegyzesek1[i].Likeok > legnagyobb)
+                {
+                    legnagyobb = bejegyzesek1[i].Likeok;
+                    index = i;
+                }
+            }
+            Console.WriteLine($"A legnépszerűbb bejegyzés {bejegyzesek1[index].Szerzo}-é volt, {bejegyzesek1[index].Likeok} lájkkal");
+        }
         static void Main(string[] args)
         {
             Feladat2();
@@ -70,6 +84,7 @@ namespace bejegyzesek
             FeltoltLike();
             Modosit();
             Kiir();
+            LegNepszerubb();
             Console.ReadKey();
         }
     }
