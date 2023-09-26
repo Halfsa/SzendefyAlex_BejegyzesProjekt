@@ -41,10 +41,21 @@ namespace bejegyzesek
             }
             
         }
+        static void FeltoltLike()
+        {
+            Random r = new Random();
+            int likeok = bejegyzesek1.Count()*20;
+            while (likeok > 0)
+            {
+                bejegyzesek1[r.Next(0, bejegyzesek1.Count)].Like();
+                likeok--;
+            }
+        }
         static void Main(string[] args)
         {
             Feladat2();
             Beolvasás();
+            FeltoltLike();
             Console.ReadKey();
         }
     }
