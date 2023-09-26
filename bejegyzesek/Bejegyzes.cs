@@ -14,7 +14,7 @@ namespace bejegyzesek
         private int likeok;
         private DateTime letrejott;
         private DateTime szerkesztve;
-
+        public bool szerkeszt = false;
         public Bejegyzes(string szerzo, string tartalom)
         {
             this.szerzo = szerzo;
@@ -28,6 +28,7 @@ namespace bejegyzesek
         public string Tartalom { get => tartalom; set {
                 tartalom = value;
                 Szerkesztve = DateTime.Now;
+                szerkeszt = true;
             } }
         public int Likeok { get => likeok; set => likeok = value; }
         public DateTime Letrejott { get => letrejott; }
@@ -39,13 +40,14 @@ namespace bejegyzesek
         }
         public override string ToString()
         {
-            if (letrejott != szerkesztve)
+            if (szerkeszt == false)
             {
-                return $"{szerzo} - {likeok} - {letrejott}\nSzerkesztve: {szerkesztve}\n{tartalom}";
+                return $"\n{szerzo} - {likeok} - {letrejott}\n{tartalom}\n";
+                
             }
             else
             {
-                return $"{szerzo} - {likeok} - {letrejott}\n{tartalom}";
+                return $"\n{szerzo} - {likeok} - {letrejott}\nSzerkesztve: {szerkesztve}\n{tartalom}\n";
             }
             
         }

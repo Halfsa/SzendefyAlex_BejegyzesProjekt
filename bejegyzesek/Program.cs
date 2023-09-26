@@ -51,11 +51,25 @@ namespace bejegyzesek
                 likeok--;
             }
         }
+        static void Modosit()
+        {
+            Console.WriteLine("Adja meg a tartalmat amire a 2. bejegyzést módosítani akarja");
+            bejegyzesek1[1].Tartalom = Console.ReadLine();
+        }
+        static void Kiir()
+        {
+            for (int i = 0; i < bejegyzesek1.Count; i++)
+            {
+                Console.WriteLine(bejegyzesek1[i].ToString());
+            }
+        }
         static void Main(string[] args)
         {
             Feladat2();
             Beolvasás();
             FeltoltLike();
+            Modosit();
+            Kiir();
             Console.ReadKey();
         }
     }
