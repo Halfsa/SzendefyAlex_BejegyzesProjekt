@@ -10,6 +10,7 @@ namespace bejegyzesek
     {
         static void Main(string[] args)
         {
+            
         }
     }
 }
