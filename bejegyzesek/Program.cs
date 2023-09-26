@@ -67,15 +67,51 @@ namespace bejegyzesek
         {
             int legnagyobb = 0;
             int index = 0;
+            bool mom = false;
             for (int i = 0; i < bejegyzesek1.Count; i++)
             {
                 if (bejegyzesek1[i].Likeok > legnagyobb)
                 {
                     legnagyobb = bejegyzesek1[i].Likeok;
                     index = i;
+
+                }
+                if (15 > bejegyzesek1[i].Likeok)
+                {
+                    mom = true;
                 }
             }
-            Console.WriteLine($"A legnépszerűbb bejegyzés {bejegyzesek1[index].Szerzo}-é volt, {bejegyzesek1[index].Likeok} lájkkal");
+            Console.WriteLine($"A legnépszerűbb bejegyzés {bejegyzesek1[index].Szerzo}-é volt, {bejegyzesek1[index].Likeok} likeal");
+            if (legnagyobb >35)
+            {
+                Console.WriteLine("\nVolt olyan bejegyzés, ami több mint 35 likeot kapott");
+            }
+            else
+            {
+                Console.WriteLine("\nNem volt olyan bejegyzés ami több mint 35 likeot kapott volna");
+            }
+            if (mom == true)
+            {
+                Console.WriteLine("\nVolt olyan bejegyzés ami 15-nél kevesebb likeot kapott");
+            }
+            else
+            {
+                Console.WriteLine("\nNem volt olyan bejegyzés ami kevesebb mint 15 likeot kapott volna");
+            }
+        }
+        static void ListaRendez()
+        {
+            StreamWriter sw = new StreamWriter("bejegyzesek_rendezett.txt");
+            bejegyzesek2 = bejegyzesek1.OrderBy(x => x.Likeok).ToList();
+            bejegyzesek2.Reverse();
+            bejegyzesek1 = bejegyzesek2;
+            for (int i = 0; i < bejegyzesek1.Count; i++)
+            {
+                Console.WriteLine(bejegyzesek1[i].ToString());
+                sw.WriteLine(bejegyzesek1[i].ToString());
+            }
+            sw.Close();
+
         }
         static void Main(string[] args)
         {
@@ -85,6 +121,7 @@ namespace bejegyzesek
             Modosit();
             Kiir();
             LegNepszerubb();
+            ListaRendez();
             Console.ReadKey();
         }
     }
